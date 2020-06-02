@@ -1,5 +1,4 @@
 
-$(document).ready(function () {
    var name = getQueryVariable('name') || 'Anonymous';
    var room = getQueryVariable('room');
    var socket = io();
@@ -17,6 +16,7 @@ $(document).ready(function () {
 
    // Message Event Handler
    socket.on('message', function (message) {
+      console.log(message)
       var timestamp = moment.utc(message.timestamp);
       const newNode = document.createElement('div');
       newNode.innerHTML = `<b>${message.name}:&nbsp;</b> ${message.text}`;
@@ -37,6 +37,6 @@ $(document).ready(function () {
          });
       }
 }
-message_input.value = '';
-message_input.focus();
-});
+   message_input.value = '';
+   message_input.focus();
+
