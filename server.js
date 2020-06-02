@@ -7,7 +7,7 @@ var moment = require('moment');
 var now = moment();
 
 app.use(express.static(__dirname + '/public'));
-
+var userData=0;
 var clientInfo = {};
 var queue = [];
 io.on('connection', function (socket) {
@@ -20,7 +20,7 @@ io.on('connection', function (socket) {
             queue.splice(index, 1);
         }
 
-        var userData = clientInfo[socket.id];
+         userData = clientInfo[socket.id];
         if (userData) {
         var partnerId = clientInfo[socket.id].partner;
         var partnerData = clientInfo[partnerId];

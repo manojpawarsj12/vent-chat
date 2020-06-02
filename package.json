@@ -1,0 +1,33 @@
+{
+  "name": "chat-matchmaking",
+  "version": "1.0.0",
+  "description": "random chat",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.26.0",
+    "socketio": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manojpawarsj12/stranger-chat"
+  },
+  "author": "Manoj Pawar SJ",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manojpawarsj12/stranger-chat/issues"
+  },
+  "homepage": "https://github.com/manojpawarsj12/stranger-chat#readme",
+  "keywords": [
+    "omegle",
+    "stranger",
+    "chat",
+    "random",
+    "chat"
+  ]
+}
