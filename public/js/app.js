@@ -1,6 +1,14 @@
+var name;   
+var room = "ok";
+const main =()=>{
+   let user = document.getElementById('names');
+   console.log(user);
+   name= user.value;
+  
+}
+window.onload = main;
 
-   var name = getQueryVariable('name') || 'Anonymous';
-   var room = getQueryVariable('room');
+
    var socket = io();
 
    console.log(name + ' is requesting to join room ' + room);
@@ -39,4 +47,3 @@
 }
    message_input.value = '';
    message_input.focus();
-
