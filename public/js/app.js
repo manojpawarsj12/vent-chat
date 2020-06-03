@@ -1,5 +1,5 @@
 var name;   
-var room = "ok";
+
 const main =()=>{
    let user = document.getElementById('names');
    console.log(user);
@@ -11,7 +11,7 @@ window.onload = main;
 
    var socket = io();
 
-   console.log(name + ' is requesting to join room ' + room);
+   console.log(name);
 
 
    // Connection Event Handler
