@@ -1,0 +1,11 @@
+.hidden{
+    display: none;
+}
+
+.hidden_chat{
+    display: none;
+}
+
+.show_username{
+    display: inline;
+}
