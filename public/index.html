@@ -4,37 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>My Chat App</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <h1>My Chat App</h1>
+    <form id="username_submit" action="/chat.html">
 
-    <div id="topkek">
-        <h1>My Chat App</h1>
-
-        <form id="username_submit">
-
-            <label>Enter your username:</label>
-            <input type="text" name="username" id="names" />
+        <label>Enter your username:</label>
+        <input type="text" name="username" id="names" />
 
 
-            <button type="submit">Submit</button>
+        <button type="submit">Submit</button>
 
-        </form>
-    </div>
+    </form>
 
-    <div id="topkek2" class="hidden">
-        <h1>Welcome to chat </h1>
 
-        <div id="messages"></div>
-
-        <form id="message_input_form">
-            <input type="text" id="message_input" placeholder="Enter your message here">
-            <button type="submit">Send</button>
-        </form>
-    </div>
-    <script defer src="/js/app.js"></script>
 </body>
+
 
 </html>

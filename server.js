@@ -3,7 +3,8 @@ var express = require("express");
 var app = express();
 var http = require("http").Server(app);
 var io = require("socket.io")(http);
-
+var moment = require("moment");
+var now = moment();
 
 app.use(express.static(__dirname + "/public"));
 var userData = 0;
@@ -29,8 +30,8 @@ io.on("connection", function (socket) {
       io.to(userData.room).emit("message", {
         name: "System",
         text:
-          " has left! Please restart to find a new matchup.",
-        timestamp: Date.now(),
+          userData.name + " has left! Please restart to find a new matchup.",
+        timestamp: moment().valueOf(),
       });
       socket.leave(clientInfo[socket.id]);
       socket.leave(clientInfo[partnerId]);
@@ -44,7 +45,7 @@ io.on("connection", function (socket) {
     socket.emit("message", {
       name: "System",
       text: "Welcome to chat-matchmaking, we are matching you now!",
-      timestamp: Date.now(),
+      timestamp: moment().valueOf(),
     });
 
     clientInfo[socket.id] = req;
@@ -65,14 +66,14 @@ io.on("connection", function (socket) {
 
       matchedSocket.in(roomName).emit("message", {
         name: "System",
-        text: 'You have been matched! Say hi  !',
-        timestamp: Date.now(),
+        text: "You have been matched! Say hi to " + matchedName + " !",
+        timestamp: moment().valueOf(),
       });
 
       socket.in(roomName).emit("message", {
         name: "System",
-        text: 'You have been matched! Say hi to !',
-        timestamp: Date.now(),
+        text: "You have been matched! Say hi to " + name + " !",
+        timestamp: moment().valueOf(),
       });
     } else {
       clientInfo[socket.id].room = null;
@@ -84,9 +85,7 @@ io.on("connection", function (socket) {
 
   // Message Event Handler
   socket.on("message", function (message) {
-    console.log(
-      "Message being broadcast: " + message.name + " : " + message.text
-    );
+    console.log("Message being broadcast: " + message.text);
 
     if (message.text === "@currentUsers") {
       sendCurrentUsers(socket);
@@ -115,7 +114,7 @@ function sendCurrentUsers(socket) {
   socket.emit("message", {
     name: "System",
     text: "Current users: " + users.join(","),
-    timestamp: Date.now(),
+    timestamp: moment().valueOf(),
   });
 }
 

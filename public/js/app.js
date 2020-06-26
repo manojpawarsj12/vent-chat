@@ -1,32 +1,15 @@
-let check = false;
-let name = "";
-let topkek = document.getElementById("topkek");
-let topkek2 = document.getElementById("topkek2");
-function get_username() {
-  name = document.getElementById("names");
-  document.getElementById("username_submit").onsubmit = function (e) {
-    name = name.value;
-    console.log(name);
-    hide();
-    show();
-    e.preventDefault();
-  }
-}
-function show() {
-  check = true;
-  topkek2.classList.remove("hidden");
-}
-function hide() {
-  check = false;
-  topkek.classList.add("hidden");
-}
+var name;
+const url = new URL(window.location);
+let usern = url.search;
+name = usern.slice(10, usern.length);
 
-let socket = io();
+var socket = io();
+
+console.log(name);
 
 // Connection Event Handler
 socket.on("connect", function () {
   console.log("Connected to server");
-  get_username();
   socket.emit("joinRoom", {
     name: name,
   });
