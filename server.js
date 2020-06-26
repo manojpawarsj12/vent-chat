@@ -3,8 +3,6 @@ var express = require("express");
 var app = express();
 var http = require("http").Server(app);
 var io = require("socket.io")(http);
-var moment = require("moment");
-var now = moment();
 
 app.use(express.static(__dirname + "/public"));
 var userData = 0;
@@ -31,7 +29,7 @@ io.on("connection", function (socket) {
         name: "System",
         text:
           userData.name + " has left! Please restart to find a new matchup.",
-        timestamp: moment().valueOf(),
+        timestamp: Date.now(),
       });
       socket.leave(clientInfo[socket.id]);
       socket.leave(clientInfo[partnerId]);
@@ -45,7 +43,7 @@ io.on("connection", function (socket) {
     socket.emit("message", {
       name: "System",
       text: "Welcome to chat-matchmaking, we are matching you now!",
-      timestamp: moment().valueOf(),
+      timestamp: Date.now(),
     });
 
     clientInfo[socket.id] = req;
@@ -67,13 +65,13 @@ io.on("connection", function (socket) {
       matchedSocket.in(roomName).emit("message", {
         name: "System",
         text: "You have been matched! Say hi to " + matchedName + " !",
-        timestamp: moment().valueOf(),
+        timestamp: Date.now(),
       });
 
       socket.in(roomName).emit("message", {
         name: "System",
         text: "You have been matched! Say hi to " + name + " !",
-        timestamp: moment().valueOf(),
+        timestamp: Date.now(),
       });
     } else {
       clientInfo[socket.id].room = null;
@@ -114,7 +112,7 @@ function sendCurrentUsers(socket) {
   socket.emit("message", {
     name: "System",
     text: "Current users: " + users.join(","),
-    timestamp: moment().valueOf(),
+    timestamp: Date.now(),
   });
 }
 
