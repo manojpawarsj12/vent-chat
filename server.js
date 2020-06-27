@@ -1,4 +1,4 @@
-var PORT = 8000;
+var PORT = process.env.PORT || 1105;
 var express = require("express");
 var app = express();
 var http = require("http").Server(app);
@@ -28,7 +28,7 @@ io.on("connection", function (socket) {
       io.to(userData.room).emit("message", {
         name: "System",
         text:
-          userData.name + " has left! Please restart to find a new matchup.",
+          userData.name + " has left! Please restart page to find a new matchup.",
         timestamp: Date.now(),
       });
       socket.leave(clientInfo[socket.id]);
