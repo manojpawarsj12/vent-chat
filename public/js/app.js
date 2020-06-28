@@ -1,7 +1,9 @@
 var name;
-const url = new URL(window.location);
-let usern = url.search;
-name = usern.slice(10, usern.length);
+//let url = new URL(window.location);
+const url=decodeURIComponent(new URL(window.location));
+console.log(url)
+name = url.slice((url.indexOf("=")+1),url.length);
+
 
 var socket = io();
 
