@@ -1,23 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Socket.io Basics</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Vent Chat</title>
 </head>
 
 <body>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 
-    <h1>Welcome to chat </h1>
+    <header>
+        <h1 class="title">Vent Chat</h1>
+    </header>
 
-    <div id="messages"></div>
+    <div class"messages" id="messages"></div>
 
     <form id="message_input_form">
-        <input type="text" id="message_input" placeholder="Enter your message here">
-        <button type="submit">Send</button>
+        <div class="chat-controls">
+            <button class=" butt button-primary " type="submit" id="new_user" onClick="window.location.reload()">New
+                User</button>
+            <textarea class="u-full-width" type="text" id="message_input" name="content"
+                placeholder="Enter your message here" style=" margin-bottom: 0px;
+                "></textarea>
+            <button class="butt2 button-primary" type="submit">Send</button>
+
+
+        </div>
     </form>
 
     <script src="/js/app.js"></script>
 </body>
+
+</html>

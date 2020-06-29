@@ -1,11 +1,47 @@
-.hidden{
-    display: none;
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.hidden_chat{
-    display: none;
+.title {
+  text-align: center;
+  margin: auto;
 }
 
-.show_username{
-    display: inline;
+.username_forum {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.chat-controls {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  margin: 0;
+}
+
+.butt {
+  height: 60px;
+  flex: 0.1;
+  margin-bottom: 0;
+  margin: 0;
+}
+
+.butt2 {
+  height: 60px;
+  flex: 0.1;
+  margin-bottom: 0;
+  margin: 0;
+}
+
+.textarea {
+  flex: auto;
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  margin-bottom: 0;
 }
