@@ -10,6 +10,7 @@ body {
   font-family: Helvetica, sans-serif;
 }
 
+
 .title {
   text-align: center;
   margin: auto;
@@ -32,6 +33,22 @@ body {
   background: var(--msger-bg);
   box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
 }
-.textarea {
-  width: 80%;
+.chat-controls{
+  display: flex;
+  position: relative;
+  bottom: 0;
+  height: 50px;
+  width:100%;
+  resize: none;
+  padding: 1px;
+  
+
+}
+.butt {
+  flex:auto;
+  height: 50px;
+}
+.butt2 {
+  flex:auto;
+  height: 50px;
 }
