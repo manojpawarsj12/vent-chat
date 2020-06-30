@@ -28,7 +28,8 @@ io.on("connection", function (socket) {
       io.to(userData.room).emit("message", {
         name: "System",
         text:
-          userData.name + " has left! Please restart page to find a new matchup.",
+          userData.name +
+          " has left! Please restart page to find a new matchup.",
         timestamp: Date.now(),
       });
       socket.leave(clientInfo[socket.id]);

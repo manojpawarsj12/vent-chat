@@ -34,6 +34,7 @@ document.getElementById("message_input_form").onsubmit = function (e) {
       text: chattext,
     });
   }
+  document.getElementById("message_input").value = "";
 };
 message_input.value = "";
 message_input.focus();

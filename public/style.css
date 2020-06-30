@@ -3,6 +3,11 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: var(--body-bg);
+  font-family: Helvetica, sans-serif;
 }
 
 .title {
@@ -14,34 +19,19 @@ body {
   width: 30%;
   margin: 0 auto;
 }
-
-.chat-controls {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 50px;
+.msger {
   display: flex;
-  margin: 0;
-}
-
-.butt {
-  height: 60px;
-  flex: 0.1;
-  margin-bottom: 0;
-  margin: 0;
-}
-
-.butt2 {
-  height: 60px;
-  flex: 0.1;
-  margin-bottom: 0;
-  margin: 0;
-}
-
-.textarea {
-  flex: auto;
+  flex-flow: column wrap;
+  justify-content: space-between;
   width: 100%;
-  height: 40px;
-  margin: 0;
-  margin-bottom: 0;
+  max-width: 867px;
+  margin: 25px 10px;
+  height: calc(100% - 50px);
+  border: var(--border);
+  border-radius: 5px;
+  background: var(--msger-bg);
+  box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
+}
+.textarea {
+  width: 80%;
 }
