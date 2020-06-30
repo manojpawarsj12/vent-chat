@@ -52,3 +52,7 @@ body {
   flex:auto;
   height: 50px;
 }
+.textarea{
+  resize: none;
+  flex: auto;
+}
