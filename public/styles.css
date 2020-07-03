@@ -1,21 +1,26 @@
 body {
-    margin: 0;
-    padding: 0;
     width: 100%;
-    height: 100%;
-    
     background-image: var(--body-bg);
     font-family: Helvetica, sans-serif;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: min-content;
+    margin: auto;
+    padding: 0;
 }
 
 .title {
     text-align: center;
-    margin: auto;
 }
 
 .username_forum {
-    width: 30%;
+    width: 71%;
     margin: 0 auto;
+    min-width: 100px;
+    max-width: 500px;
+    text-align: center;
+    margin-top: 50px;
 }
 .darkmode{
     background-color: black;
