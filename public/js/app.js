@@ -21,6 +21,15 @@ socket.on("message", function (message) {
   document.getElementById("messages").appendChild(newNode);
 });
 
+// User Left Event Handler
+socket.on("user_left", disableChatBox);
+
+function disableChatBox() {
+  document.querySelector(".butt2").disabled = true
+  document.querySelector("textarea").disabled = true
+  socket.disconnect();
+}
+
 // Form Submission Event Handler
 
 let message_input = document.getElementById("message_input");

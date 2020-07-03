@@ -32,6 +32,11 @@ io.on("connection", function (socket) {
           " has left! Please restart page to find a new matchup.",
         timestamp: Date.now(),
       });
+
+      io.to(userData.room).emit("user_left", {
+        username: userData.name
+      });
+
       socket.leave(clientInfo[socket.id]);
       socket.leave(clientInfo[partnerId]);
       delete clientInfo[socket.id];
@@ -89,7 +94,9 @@ io.on("connection", function (socket) {
     if (message.text === "@currentUsers") {
       sendCurrentUsers(socket);
     } else {
-      io.to(clientInfo[socket.id].room).emit("message", message);
+      if(clientInfo[socket.id])
+        io.to(clientInfo[socket.id].room).emit("message", message);
+  
     }
   });
 });
