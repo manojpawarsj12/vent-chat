@@ -60,8 +60,8 @@ textarea{
 }
 
 #messages div {
-  width: 80%;
-  word-break: break-all;
+  width: 90%;
+  word-break: break-word;
   margin: 2px 12px;
 }
 
