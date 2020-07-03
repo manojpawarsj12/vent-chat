@@ -31,3 +31,8 @@ body {
       text-align:center;
       margin-top:5pt;
   }
+
+  #github-link span{
+    vertical-align: middle;
+    margin-left:1pt;
+  }
