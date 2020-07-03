@@ -26,3 +26,8 @@ body {
     background-color: black;
     color: white;
   }
+
+  #github-link{
+      text-align:center;
+      margin-top:5pt;
+  }
