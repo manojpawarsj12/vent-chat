@@ -6,6 +6,8 @@ name = url.slice(url.indexOf("=") + 1, url.length);
 
 var socket = io();
 
+const chatContainer = document.querySelector("#messages")
+
 // Connection Event Handler
 socket.on("connect", function () {
   console.log("Connected to server");
@@ -19,6 +21,8 @@ socket.on("message", function (message) {
   const newNode = document.createElement("div");
   newNode.innerHTML = `<b>${message.name}:&nbsp;</b> ${message.text}`;
   document.getElementById("messages").appendChild(newNode);
+  chatContainer.scrollTop = chatContainer.scrollHeight
+  
 });
 
 // User Left Event Handler
@@ -27,7 +31,6 @@ socket.on("user_left", disableChatBox);
 function disableChatBox() {
   document.querySelector(".butt2").disabled = true
   document.querySelector("textarea").disabled = true
-  socket.disconnect();
 }
 
 // Form Submission Event Handler

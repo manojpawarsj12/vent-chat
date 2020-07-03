@@ -94,9 +94,7 @@ io.on("connection", function (socket) {
     if (message.text === "@currentUsers") {
       sendCurrentUsers(socket);
     } else {
-      if(clientInfo[socket.id])
-        io.to(clientInfo[socket.id].room).emit("message", message);
-  
+      io.to(clientInfo[socket.id].room).emit("message", message);
     }
   });
 });
