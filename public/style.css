@@ -27,7 +27,7 @@ body {
   width: 100%;
   max-width: 867px;
   margin: 25px 10px;
-  height: calc(100% - 50px);
+  height: calc(100vh - 50px);
   border: var(--border);
   border-radius: 5px;
   background: var(--msger-bg);
@@ -63,4 +63,12 @@ textarea{
   width: 80%;
   word-break: break-all;
   margin: 2px 12px;
+}
+
+div#messages {
+    height: calc(100% - 300px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: absolute;
+    bottom: 126px;
 }
