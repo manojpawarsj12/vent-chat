@@ -52,7 +52,15 @@ body {
   flex:auto;
   height: 50px;
 }
-.textarea{
+textarea{
   resize: none;
   flex: auto;
+  min-height:auto;
+  height:100%;
+}
+
+#messages div {
+  width: 80%;
+  word-break: break-all;
+  margin: 2px 12px;
 }
