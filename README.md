@@ -1,3 +1,3 @@
 # stranger-chat
 
-demo : ventchat.herokuapp.com
+demo : [ventchat](http://ventchat.herokuapp.com)
