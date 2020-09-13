@@ -1,7 +1,15 @@
 <%- include('partials/header'); -%>
 
-    <a href="/login">login</a>
-    <a href="/signup">signup</a>
-
+<link rel="stylesheet" href="styles.css">
+<header>
+    <h1 class="title">Vent Chat</h1>
+</header>
+<% if(clientusername!==null) { %>
+        <p>Welcome, <%=JSON.stringify(clientusername.username) %></p>
+        <a href="/randomchat">Start Chating</a>
+    <% } else { %>
+        <a href="/login">login</a>
+        <a href="/signup">signup</a>
+    <% } %>
 
 <%- include('partials/footer'); -%>

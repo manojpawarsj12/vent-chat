@@ -24,7 +24,7 @@ app.set("view engine", "ejs");
 
 // routes
 app.get("*", checkUser);
-app.get("/", (req, res) => res.render("home"));
+app.get("/", (req, res) => res.render("home", { clientusername: res.locals.user } ));
 app.use(authRoutes);
 app.get("/randomchat", requireAuth, (req, res) => {
   res.render("chat", { clientusername: res.locals.user });
