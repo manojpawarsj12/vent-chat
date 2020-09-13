@@ -1,74 +1,74 @@
 body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: var(--body-bg);
-  font-family: Helvetica, sans-serif;
-}
-
-
-.title {
-  text-align: center;
-  margin: auto;
-}
-
-.username_forum {
-  width: 30%;
-  margin: 0 auto;
-}
-.msger {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 867px;
-  margin: 25px 10px;
-  height: calc(100vh - 50px);
-  border: var(--border);
-  border-radius: 5px;
-  background: var(--msger-bg);
-  box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
-}
-.chat-controls{
-  display: flex;
-  position: relative;
-  bottom: 0;
-  height: 50px;
-  width:100%;
-  resize: none;
-  padding: 1px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: var(--body-bg);
+    font-family: Helvetica, sans-serif;
+  }
   
-
-}
-.butt {
-  flex:auto;
-  height: 50px;
-}
-.butt2 {
-  flex:auto;
-  height: 50px;
-}
-textarea{
-  resize: none;
-  flex: auto;
-  min-height:auto;
-  height:100%;
-}
-
-#messages div {
-  width: 90%;
-  word-break: break-word;
-  margin: 2px 12px;
-}
-
-div#messages {
-    height: calc(100% - 300px);
-    overflow-y: auto;
-    overflow-x: hidden;
-    position: absolute;
-    bottom: 126px;
-}
+  
+  .title {
+    text-align: center;
+    margin: auto;
+  }
+  
+  .username_forum {
+    width: 30%;
+    margin: 0 auto;
+  }
+  .msger {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 867px;
+    margin: 25px 10px;
+    height: calc(100vh - 50px);
+    border: var(--border);
+    border-radius: 5px;
+    background: var(--msger-bg);
+    box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
+  }
+  .chat-controls{
+    display: flex;
+    position: relative;
+    bottom: 0;
+    height: 50px;
+    width:100%;
+    resize: none;
+    padding: 1px;
+    
+  
+  }
+  .butt {
+    flex:auto;
+    height: 50px;
+  }
+  .butt2 {
+    flex:auto;
+    height: 50px;
+  }
+  textarea{
+    resize: none;
+    flex: auto;
+    min-height:auto;
+    height:100%;
+  }
+  
+  #messages div {
+    width: 90%;
+    word-break: break-word;
+    margin: 2px 12px;
+  }
+  
+  div#messages {
+      height: calc(100% - 300px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: absolute;
+      bottom: 126px;
+  }

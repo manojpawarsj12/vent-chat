@@ -1,10 +1,6 @@
-var name;
-//let url = new URL(window.location);
-const url = decodeURI(window.location).replace( /\+/g, ' ' );
-
-name = url.slice(url.indexOf("=") + 1, url.length);
-
-var socket = io();
+var name = names;
+console.log(name)
+const socket = io();
 
 const chatContainer = document.querySelector("#messages")
 

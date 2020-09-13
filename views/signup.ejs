@@ -1,0 +1,57 @@
+<%- include('partials/header'); -%>
+
+    <form class="signup_forum" id="signup_submit" action="/signup" >
+
+        <label>Enter your username</label>
+        <input class="u-full-width" type="text" name="username" id="signupnames" required/>
+        <div class="username error"></div>
+        <label>Enter your email</label>
+        <input class="u-full-width" type="text" name="email" id="signupemail" required/>
+        <div class="email error"></div>
+        <label>Enter your password</label>
+        <input class="u-full-width" type="password" name="password" id="signuppassnames" required />
+        <div class="password error"></div>
+        <button class="button button-primary" type="submit">Submit</button>
+        
+
+    </form>
+
+<%- include('partials/footer'); -%>
+
+<script >
+  const form = document.querySelector('form');
+  const emailError = document.querySelector('.email.error');
+  const passwordError = document.querySelector('.password.error');
+  const usernameerror = document.querySelector(".username.error");
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    // reset errors
+    emailError.textContent = '';
+    passwordError.textContent = '';
+    usernameerror.textContent = "";
+    // get values
+    const username = document.getElementById("signupnames").value;
+    const email = document.getElementById("signupemail").value;
+    const password = document.getElementById("signuppassnames").value;
+    try {
+      const res = await fetch('/signup', { 
+        method: 'POST', 
+        body: JSON.stringify({ username, email, password }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.errors) {
+        emailError.textContent = data.errors.email;
+        passwordError.textContent = data.errors.password;
+        usernameerror.textContent = data.errors.username;
+      }
+      if (data.user) {
+        location.assign('/');
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+</script>

@@ -1,0 +1,50 @@
+
+<%- include('partials/header'); -%>
+
+
+    <form class="login_forum" id="login_submit" action="/signup" >
+
+        <label>Enter your username</label>
+        <input class="u-full-width" type="text" name="username" id="names" required/>
+        <div class="email error"></div>
+        <label>Enter your password</label>
+        <input class="u-full-width" type="password" name="password" id="passnames" required />
+
+        <button class="button button-primary" type="submit">Submit</button>
+        <div class="password error"></div>
+
+    </form>
+    <%- include('partials/footer'); -%>
+<script >
+  const form = document.querySelector('form');
+  const emailError = document.querySelector('.email.error');
+  const passwordError = document.querySelector('.password.error');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    emailError.textContent = '';
+    passwordError.textContent = '';
+
+    const username = document.getElementById("names").value;
+    const password = document.getElementById("passnames").value;
+    try {
+      const res = await fetch('/login', { 
+        method: 'POST', 
+        body: JSON.stringify({ username, password }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.errors) {
+        emailError.textContent = data.errors.email;
+        passwordError.textContent = data.errors.password;
+      }
+      if (data.user) {
+        location.assign('/');
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+</script>

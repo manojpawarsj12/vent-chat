@@ -1,32 +1,25 @@
 {
-  "name": "chat-matchmaking",
+  "name": "chatapp",
   "version": "1.0.0",
-  "description": "random chat",
-  "main": "server.js",
-  "dependencies": {
-    "express": "^4.17.1",
-    "socket.io": "^2.3.0"
-  },
-  "devDependencies": {},
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "node test/test.js",
-    "start": "npm audit fix && node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/manojpawarsj12/stranger-chat"
-  },
-  "author": "Manoj Pawar SJ",
+  "start": " node app.js"
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/manojpawarsj12/stranger-chat/issues"
-  },
-  "homepage": "https://github.com/manojpawarsj12/stranger-chat#readme",
-  "keywords": [
-    "omegle",
-    "stranger",
-    "chat",
-    "random",
-    "chat"
-  ]
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.5",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4",
+    "socket.io": "^2.3.0",
+    "validator": "^13.1.1"
+  }
 }
