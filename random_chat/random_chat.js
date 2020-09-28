@@ -1,7 +1,15 @@
+const { query } = require("express");
+const User = require("../models/User");
+const mongoose = require("mongoose");
+
 function randomchatfu(io) {
   let userData = 0;
   let clientInfo = {};
   let queue = [];
+  var matchedName = "";
+  var roomName = "";
+  var name = "";
+
   io.on("connection", function (socket) {
     console.log("User connected");
     // Disconnect Event Handler
@@ -51,10 +59,10 @@ function randomchatfu(io) {
 
       clientInfo[socket.id] = req;
       if (queue.length > 0) {
-        var matchedSocket = queue.pop();
-        var roomName = socket.id + "#" + matchedSocket.id;
-        var name = clientInfo[socket.id].name;
-        var matchedName = clientInfo[matchedSocket.id].name;
+        matchedSocket = queue.pop();
+        roomName = socket.id + "#" + matchedSocket.id;
+        name = clientInfo[socket.id].name;
+        matchedName = clientInfo[matchedSocket.id].name;
 
         socket.join(roomName);
         matchedSocket.join(roomName);
@@ -76,6 +84,9 @@ function randomchatfu(io) {
           text: "You have been matched! Say hi to " + name + " !",
           timestamp: Date.now(),
         });
+        socket.in(roomName).emit("otheruserevent", {
+          matchedName: name,
+        });
       } else {
         clientInfo[socket.id].room = null;
         clientInfo[socket.id].partner = null;
@@ -86,12 +97,37 @@ function randomchatfu(io) {
 
     // Message Event Handler
     socket.on("message", function (message) {
-      console.log("Message being broadcast: " + message.text);
+      //console.log("Message being broadcast: " + message.text);
 
       if (message.text === "@currentUsers") {
         sendCurrentUsers(socket);
       } else {
         io.to(clientInfo[socket.id].room).emit("message", message);
+      }
+    });
+
+    socket.on("sendfriendreq", async function (frienddata) {
+      let from = frienddata.from;
+      let to = undefined;
+      if (from === name) {
+        to = matchedName;
+      }
+      if (from === matchedName) {
+        to = name;
+      }
+      console.log(from, to);
+      if (to) {
+        try {
+          let ids = await User.findOne({ username: to });
+          id = ids._id;
+          let user = await User.findOne({ username: from });
+          user.friendrequest.addToSet(mongoose.Types.ObjectId(id));
+          ids.friendrequest.addToSet(mongoose.Types.ObjectId(user._id));
+          user.save();
+          ids.save();
+        } catch (err) {
+          console.log(err);
+        }
       }
     });
   });

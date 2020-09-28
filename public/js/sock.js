@@ -1,8 +1,9 @@
 var name = names;
-console.log(name)
+console.log(name);
 const socket = io();
-
-const chatContainer = document.querySelector("#messages")
+let matchedname = undefined;
+const chatContainer = document.querySelector("#messages");
+const reqbutton = document.getElementById("sendrequest");
 
 // Connection Event Handler
 socket.on("connect", function () {
@@ -14,19 +15,20 @@ socket.on("connect", function () {
 
 // Message Event Handler
 socket.on("message", function (message) {
+  console.log(message);
   const newNode = document.createElement("div");
   newNode.innerHTML = `<b>${message.name}:&nbsp;</b> ${message.text}`;
   document.getElementById("messages").appendChild(newNode);
-  chatContainer.scrollTop = chatContainer.scrollHeight
-  
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+
 });
 
 // User Left Event Handler
 socket.on("user_left", disableChatBox);
 
 function disableChatBox() {
-  document.querySelector(".butt2").disabled = true
-  document.querySelector("textarea").disabled = true
+  document.querySelector(".butt2").disabled = true;
+  document.querySelector("textarea").disabled = true;
 }
 
 // Form Submission Event Handler
@@ -46,3 +48,10 @@ document.getElementById("message_input_form").onsubmit = function (e) {
 };
 message_input.value = "";
 message_input.focus();
+
+reqbutton.addEventListener("click", (e) => {
+  e.preventDefault();
+  socket.emit("sendfriendreq", {
+    from: name
+  });
+});

@@ -1,6 +1,7 @@
 <%- include('partials/header'); -%>
 <link rel="stylesheet" href="style.css">
 <a href="/logout">logout</a>
+<button class="button button-primary" id="sendrequest" type="button">Add Friend</button>
 <div id="messages"></div>
 <form class="chat-controls" id="message_input_form">
     <div class="chat-controls">
@@ -18,7 +19,7 @@
 </form>
 <script type="text/javascript">
     var names = <%- JSON.stringify(clientusername.username); %>;
-    console.log(names)
+    console.log(names);
 </script>
 <script src="/js/sock.js"></script>
 
