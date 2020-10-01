@@ -8,6 +8,9 @@ const randomchatfu = require("./random_chat/random_chat");
 const friends = require("./routes/friends");
 const friendrequest = require("./routes/friendrequest");
 const acceptfriendrequest = require("./routes/acceptrequest");
+const rejectremove = require("./routes/rejectremove");
+const search_user = require("./routes/searchuser");
+const messages = require("./routes/messages");
 
 const app = express();
 const http = require("http").Server(app);
@@ -37,6 +40,9 @@ app.get("/randomchat", requireAuth, (req, res) => {
 app.use(friends);
 app.use(friendrequest);
 app.use(acceptfriendrequest);
+app.use(rejectremove);
+app.use(messages);
+app.use(search_user);
 randomchatfu(io);
 
 const dbURI =

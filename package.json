@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-  
-  "start": " node app.js"
+    "start": " node app.js"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +20,8 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
     "socket.io": "^2.3.0",
+    "socket.io-encrypt": "^0.2.1",
+    "uuid": "^8.3.0",
     "validator": "^13.1.1"
   }
 }

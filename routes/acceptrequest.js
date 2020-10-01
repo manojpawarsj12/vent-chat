@@ -22,7 +22,7 @@ router.get("/acceptreq/:username", requireAuth, async (req, res) => {
   
   from_friendsdb.save();
   to_friendsdb.save();
-  //from_friends.friendrequest.pull()
+  
   
  res.json("testing");
 });
