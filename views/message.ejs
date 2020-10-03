@@ -15,34 +15,9 @@
 </form>
 <script type="text/javascript">
  var names = <%- JSON.stringify(clientusername.username); %>;
- console.log(names);
-document.getElementById("message_input_form").onsubmit = async function(e) {
-    e.preventDefault();
-    let chattext = message_input.value.trim();
-    try{
-        const msgroute = "/message/"+names;
-        const res = await fetch(msgroute,{
-            body : JSON.stringify(chattext),
-            method : "POST",
-            header : "Content-Type: application/json"
-        });
-        const data = await res.json();
-        console.log(data);
-        const newNode = document.createElement("div");
-        newNode.innerHTML = `<b>${data}:&nbsp;</b>`;
-        document.getElementById("messages").appendChild(newNode);
-        //chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
-    catch(err){
-        console.log(err);
-    }
-}
-   
-    
+ console.log(names);    
 </script>
-
-
+<script type="text/javascript" src="/js/private_message_client.js">
+</script>
 </body>
-
-
 </html>

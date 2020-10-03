@@ -1,7 +1,9 @@
 const User = require("../models/User");
 const mongoose = require("mongoose");
+const socketauthmiddle = require("./socketauthmiddlware");
 
 function randomchatfu(io) {
+  socketauthmiddle(io);
   let userData = 0;
   let clientInfo = {};
   let queue = [];

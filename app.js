@@ -11,6 +11,7 @@ const acceptfriendrequest = require("./routes/acceptrequest");
 const rejectremove = require("./routes/rejectremove");
 const search_user = require("./routes/searchuser");
 const messages = require("./routes/messages");
+const privatechat = require("./random_chat/private_message")
 
 const app = express();
 const http = require("http").Server(app);
@@ -44,6 +45,7 @@ app.use(rejectremove);
 app.use(messages);
 app.use(search_user);
 randomchatfu(io);
+privatechat(io);
 
 const dbURI =
   // "mongodb+srv://manojpawarsj:manojtestdb@cluster0.9fxko.gcp.mongodb.net/dbusernames?retryWrites=true&w=majority";

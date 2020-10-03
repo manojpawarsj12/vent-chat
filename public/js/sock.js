@@ -1,6 +1,14 @@
 var name = names;
 console.log(name);
-const socket = io();
+let cook = document.cookie;
+cook = cook.slice(4, cook.length)
+
+
+const socket = io("http://localhost:3000", {
+  query: {
+    token: cook,
+  },
+});
 let matchedname = undefined;
 const chatContainer = document.querySelector("#messages");
 const reqbutton = document.getElementById("sendrequest");

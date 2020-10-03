@@ -6,10 +6,7 @@ const Conversation = require("../models/conversation");
 
 const router = Router();
 
-router.post("/message/:username", requireAuth, async (req, res) => {
-
-});
 router.get("/message/:username", requireAuth, async (req, res) => {
-  res.render("message",{ clientusername: res.locals.user });
+  res.render("message", { clientusername: res.locals.user });
 });
 module.exports = router;
