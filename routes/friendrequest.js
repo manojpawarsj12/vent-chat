@@ -34,4 +34,21 @@ router.get("/friendrequests", requireAuth, async (req, res) => {
   }
 });
 
+router.get("/sendfriendrequest/:user", requireAuth, async (req, res) => {
+  let from = res.locals.user.username;
+  let to = req.params.user;
+  try {
+    let ids = await User.findOne({ username: to });
+    id = ids._id;
+    let user = await User.findOne({ username: from });
+    user.friendrequest.addToSet(mongoose.Types.ObjectId(id));
+    ids.friendrequest.addToSet(mongoose.Types.ObjectId(user._id));
+    user.save();
+    ids.save();
+    res.json("done")
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 module.exports = router;

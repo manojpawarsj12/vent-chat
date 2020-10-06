@@ -59,7 +59,4 @@ message_input.focus();
 
 reqbutton.addEventListener("click", (e) => {
   e.preventDefault();
-  socket.emit("sendfriendreq", {
-    from: name
-  });
 });

@@ -1,5 +1,5 @@
 <%- include('partials/header'); -%>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/public/style.css">
 <a href="/logout">logout</a>
 <div id="messages"></div>
 <form class="chat-controls" id="message_input_form">
@@ -16,8 +16,10 @@
 <script type="text/javascript">
  var names = <%- JSON.stringify(clientusername.username); %>;
  console.log(names);    
+ var msges1 = <%- JSON.stringify(msges); %>;
+ console.log(msges1);
 </script>
-<script type="text/javascript" src="/js/private_message_client.js">
+<script type="text/javascript" src="/public/js/private_message_client.js">
 </script>
 </body>
 </html>

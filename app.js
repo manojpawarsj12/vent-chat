@@ -11,14 +11,14 @@ const acceptfriendrequest = require("./routes/acceptrequest");
 const rejectremove = require("./routes/rejectremove");
 const search_user = require("./routes/searchuser");
 const messages = require("./routes/messages");
-const privatechat = require("./random_chat/private_message")
+const privatechat = require("./random_chat/private_message");
 
 const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
 const PORT = process.env.PORT || 3000;
 // middleware
-app.use(express.static(__dirname + "/public"));
+app.use("/public", express.static(__dirname + "/public"));
 
 app.use(express.json());
 app.use(cookieParser());

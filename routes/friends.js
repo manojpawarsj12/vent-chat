@@ -8,28 +8,29 @@ const router = Router();
 
 router.get("/friends", requireAuth, async (req, res) => {
   let username = res.locals.user.username;
+  let user_id = res.locals.user._id;
   let fr_username = await User.findOne({ username: username });
   let friendlist = fr_username.friends;
   //console.log(friendlist);
+  let to_user_id = 0;
   let ongay = [];
   for (friend of friendlist) {
-    let fr_name = (await User.findById(friend)).username;
-    let kek = await Conversation.find({ from: fr_username._id, to: friend })
+    to_user_id = friend;
+    //let fr_name = (await User.findById(friend)).username;
+    let kek = await Conversation.find({
+      $or: [
+        { from: user_id, to: to_user_id },
+        { from: to_user_id, to: user_id },
+      ],
+    })
       .sort({ created_at: -1 })
       .exec();
-    //console.log(kek)
     kek = kek[kek.length - 1];
-    
-    let kek2 = await Conversation.find({ from: friend, to: fr_username._id })
-      .sort({ created_at: -1 })
-      .exec();
-
-    kek2 = kek2[kek2.length - 1];
-    console.log(kek);
-    ongay.push([friend , fr_name, kek.message,kek.createdAt]);
-    ongay.push([friend , fr_name, kek2.message,kek2.createdAt]);
+    let fromname = (await User.findById(kek.from)).username;
+    let toname = (await User.findById(kek.to)).username;
+    ongay.push([kek.from,fromname,kek.to,toname,kek.createdAt,kek.message]);
   }
-  console.log(ongay);
+  //console.log(ongay);
   res.json(ongay);
 });
 

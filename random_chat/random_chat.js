@@ -107,30 +107,7 @@ function randomchatfu(io) {
       }
     });
 
-    socket.on("sendfriendreq", async function (frienddata) {
-      let from = frienddata.from;
-      let to = undefined;
-      if (from === name) {
-        to = matchedName;
-      }
-      if (from === matchedName) {
-        to = name;
-      }
-      console.log(from, to);
-      if (to) {
-        try {
-          let ids = await User.findOne({ username: to });
-          id = ids._id;
-          let user = await User.findOne({ username: from });
-          user.friendrequest.addToSet(mongoose.Types.ObjectId(id));
-          ids.friendrequest.addToSet(mongoose.Types.ObjectId(user._id));
-          user.save();
-          ids.save();
-        } catch (err) {
-          console.log(err);
-        }
-      }
-    });
+
   });
 
   // Helpers

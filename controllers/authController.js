@@ -72,7 +72,7 @@ module.exports.signup_post = async (req, res) => {
 
 module.exports.login_post = async (req, res) => {
   const { username, password } = req.body;
-
+  console.log(req.body);
   try {
     console.log("okk");
     const user = await User.login(username, password);

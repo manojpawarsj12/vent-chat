@@ -29,7 +29,7 @@ function private_chat(io) {
           to: to_friendsdb,
           message: msg,
         });
-        new_text.save(function (err, result) {
+        await new_text.save(function (err, result) {
           if (err) {
             console.log(err);
           } else {

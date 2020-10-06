@@ -1,5 +1,5 @@
 <%- include('partials/header'); -%>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/public/style.css">
 <a href="/logout">logout</a>
 <button class="button button-primary" id="sendrequest" type="button">Add Friend</button>
 <div id="messages"></div>
@@ -21,7 +21,7 @@
     var names = <%- JSON.stringify(clientusername.username); %>;
     console.log(names);
 </script>
-<script src="/js/sock.js"></script>
+<script src="/public/js/sock.js"></script>
 
 </body>
 
