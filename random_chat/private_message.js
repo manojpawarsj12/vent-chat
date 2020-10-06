@@ -29,11 +29,11 @@ function private_chat(io) {
           to: to_friendsdb,
           message: msg,
         });
-        await new_text.save(function (err, result) {
+        new_text  = await new_text.save(function (err, result) {
           if (err) {
             console.log(err);
           } else {
-            console.log(result);
+            console.log("msg saved");
           }
         });
       } catch (err) {
