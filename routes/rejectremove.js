@@ -5,7 +5,7 @@ const { requireAuth, checkUser } = require("../middleware/authMiddleware");
 
 const router = Router();
 
-router.get("/rejectreq/:username", async (req, res) => {
+router.get("/rejectreq/:username", requireAuth, async (req, res) => {
   try {
     let name1 = req.params.username;
     let name2 = res.locals.user.username;
@@ -23,7 +23,7 @@ router.get("/rejectreq/:username", async (req, res) => {
   }
 });
 
-router.get("/removefriend/:username", async (req, res) => {
+router.get("/removefriend/:username", requireAuth, async (req, res) => {
   try {
     let name1 = req.params.username;
     let name2 = res.locals.user.username;

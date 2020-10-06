@@ -7,7 +7,7 @@ const router = Router();
 
 router.get("/search/:username", requireAuth, async (req, res) => {
   let username = req.params.username;
-  userslist = [];
+  let userslist = [];
   if (username) {
     try {
       let user = await User.find({ username: username });
