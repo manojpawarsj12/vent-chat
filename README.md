@@ -1,11 +1,11 @@
-# stranger-chat
+# vent-chat
 
 demo : [ventchat](http://ventchat.herokuapp.com)
 
 
 
 ### Features
-- [x] public random chat using socketio
+- [x] public random chat like omegle,chat42 using socketio
 - [x] User Management
     - [x] Login with json web tokens (jwt)
     - [x] Signup with jwt
