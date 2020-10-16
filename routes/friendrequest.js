@@ -43,11 +43,14 @@ router.get("/sendfriendrequest/:user", requireAuth, async (req, res) => {
     let user = await User.findOne({ username: from });
     user.friendrequest.addToSet(mongoose.Types.ObjectId(id));
     ids.friendrequest.addToSet(mongoose.Types.ObjectId(user._id));
-    user = await user.save();
-    ids = await ids.save();
-    res.json("done")
+    Promise.all([user.save(), ids.save()]).then(() => {
+      console.log("sucess friendrequest");
+    });
+    res.json("done");
   } catch (err) {
+    console.log(err);
     res.json(err);
+
   }
 });
 

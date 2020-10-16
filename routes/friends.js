@@ -14,11 +14,11 @@ router.get("/friends", requireAuth, async (req, res) => {
     let friendlist = fr_username.friends;
     //console.log(friendlist);
     let to_user_id = 0;
-    let ongay = [];
+    let conversation_array = [];
     for (friend of friendlist) {
       to_user_id = friend;
       //let fr_name = (await User.findById(friend)).username;
-      let kek = await Conversation.find({
+      let conversations = await Conversation.find({
         $or: [
           { from: user_id, to: to_user_id },
           { from: to_user_id, to: user_id },
@@ -26,21 +26,22 @@ router.get("/friends", requireAuth, async (req, res) => {
       })
         .sort({ created_at: -1 })
         .exec();
-      kek = kek[kek.length - 1];
-      let fromname = (await User.findById(kek.from)).username;
-      let toname = (await User.findById(kek.to)).username;
-      ongay.push([
-        kek.from,
+      conversations = conversations[conversations.length - 1];
+      console.log(conversations);
+      let fromname = (await User.findById(conversations.from)).username;
+      let toname = (await User.findById(conversations.to)).username;
+      conversation_array.push([
+        conversations.from,
         fromname,
-        kek.to,
+        conversations.to,
         toname,
-        kek.createdAt,
-        kek.message,
+        conversations.createdAt,
+        conversations.message,
       ]);
     }
 
     //console.log(ongay);
-    res.json(ongay);
+    res.json(conversation_array);
   } catch (err) {
     console.log(err);
     res.json(err);

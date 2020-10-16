@@ -20,9 +20,9 @@ router.get("/acceptreq/:username", requireAuth, async (req, res) => {
     to_friendsdb.friendrequest.pull(from_id);
     to_friendsdb.friends.addToSet(from_id);
 
-    from_friendsdb = await from_friendsdb.save();
-    to_friendsdb = await to_friendsdb.save();
-
+    Promise.all([to_friendsdb.save(), from_friendsdb.save()]).then(() =>
+      console.log("success accepted")
+    );
     res.json("done");
   } catch (err) {
     console.log(err);

@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const mongoose = require("mongoose");
-const socketauthmiddle = require("./socketauthmiddlware");
+const socketauthmiddle = require("../middleware/socketauthmiddlware");
 
 function randomchatfu(io) {
   socketauthmiddle(io);
@@ -106,8 +106,6 @@ function randomchatfu(io) {
         io.to(clientInfo[socket.id].room).emit("message", message);
       }
     });
-
-
   });
 
   // Helpers

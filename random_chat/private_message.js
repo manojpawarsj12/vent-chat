@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const mongoose = require("mongoose");
 const Conversation = require("../models/conversation");
-const socketauthmiddleware = require("./socketauthmiddlware");
+const socketauthmiddleware = require("../middleware/socketauthmiddlware");
 
 function private_chat(io) {
   socketauthmiddleware(io);

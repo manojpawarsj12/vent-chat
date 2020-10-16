@@ -1,6 +1,12 @@
 var name = names;
-let cook = document.cookie;
-cook = cook.slice(4, cook.length)
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+let cook = getCookie("jwt");
+console.log(cook);
 
 
 const socket = io("http://localhost:3000", {

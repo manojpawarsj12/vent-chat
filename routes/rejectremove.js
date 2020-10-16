@@ -15,8 +15,9 @@ router.get("/rejectreq/:username", requireAuth, async (req, res) => {
     let user2_id = user2._id;
     user1.friendrequest.pull(user2_id);
     user2.friendrequest.pull(user1_id);
-    user1 = await user1.save();
-    user2 = await user2.save();
+    Promise.all([user1.save(), user2.save()]).then(() => {
+      console.log("reject request performed");
+    });
     res.json("done");
   } catch (err) {
     res.json(err);
@@ -33,10 +34,12 @@ router.get("/removefriend/:username", requireAuth, async (req, res) => {
     let user2_id = user2._id;
     user1.friends.pull(user2_id);
     user2.friends.pull(user1_id);
-    user1 = await user1.save();
-    user2 = await user2.save();
+    Promise.all([user1.save(), user2.save()]).then(() => {
+      console.log("remove friend success");
+    });
     res.json("done");
   } catch (err) {
+    console.log(err);
     res.json(err);
   }
 });

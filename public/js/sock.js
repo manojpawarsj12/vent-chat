@@ -1,9 +1,13 @@
 var name = names;
 console.log(name);
-let cook = document.cookie;
-cook = cook.slice(4, cook.length)
+const getCookie = (name) => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(";").shift();
+};
 
-
+let cook = getCookie("jwt");
+console.log(cook);
 const socket = io("http://localhost:3000", {
   query: {
     token: cook,
@@ -28,7 +32,6 @@ socket.on("message", function (message) {
   newNode.innerHTML = `<b>${message.name}:&nbsp;</b> ${message.text}`;
   document.getElementById("messages").appendChild(newNode);
   chatContainer.scrollTop = chatContainer.scrollHeight;
-
 });
 
 // User Left Event Handler
