@@ -4,7 +4,7 @@ const socketauthmiddle = (io) =>
     try {
       const token = socket.handshake.query.token;
       if (token) {
-        jwt.verify(token, "manoj secret", (err, decodedToken) => {
+        jwt.verify(token, process.env.jwt_key, (err, decodedToken) => {
           if (err) {
             console.log(err);
           } else {

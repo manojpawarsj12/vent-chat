@@ -7,10 +7,10 @@ const checkfriend = require("../middleware/friencheckmiddleware");
 
 const router = Router();
 
-router.get("/message/:ok", requireAuth, checkfriend, async (req, res) => {
+router.get("/message/:username", requireAuth, checkfriend, async (req, res) => {
   try {
     let username = res.locals.user.username;
-    let to_username = req.params.ok;
+    let to_username = req.params.username;
     console.log(to_username);
     let to_user_id = await User.findOne({ username: to_username });
     //console.log(to_user_id);

@@ -31,8 +31,6 @@ socket.on("privatemsg", function (message) {
 
 let message_input = document.getElementById("message_input");
 let from = name;
-var url_string = window.location.href;
-var url = new URL(url_string);
 var to = window.location.pathname;
 to = to.slice(9, to.length)
 console.log(to);
@@ -47,6 +45,9 @@ document.getElementById("message_input_form").onsubmit = function (e) {
       msg: chattext,
     });
   }
+  const newNode = document.createElement("div");
+  newNode.innerHTML = `<b>${message.to}:&nbsp;</b> ${message.msg}`;
+  document.getElementById("messages").appendChild(newNode);
   document.getElementById("message_input").value = "";
 };
 message_input.value = "";

@@ -14,7 +14,7 @@ const rejectremove = require("./routes/rejectremove");
 const search_user = require("./routes/searchuser");
 const messages = require("./routes/messages");
 const privatechat = require("./random_chat/private_message");
-
+require('dotenv').config()
 const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
@@ -24,6 +24,12 @@ app.use("/public", express.static(__dirname + "/public"));
 app.use(cookieParser());
 app.use(morgan("dev"));
 app.use(cors());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+
 //app.use(helmet());
 app.use(express.json());
 //app.use(express.urlencoded({ extended: true }));
@@ -52,9 +58,8 @@ io.set('origins', '*:*');
 randomchatfu(io);
 privatechat(io);
 
-const dbURI =
-  // "mongodb+srv://manojpawarsj:manojtestdb@cluster0.9fxko.gcp.mongodb.net/dbusernames?retryWrites=true&w=majority";
-  " mongodb://127.0.0.1:27017/dbusers";
+const dbURI = process.env.mongodbURI
+
 
 mongoose
   .connect(dbURI, {
