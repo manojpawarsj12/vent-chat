@@ -19,8 +19,11 @@ demo : [ventchat](http://ventchat.herokuapp.com)
     - [x] Cancel friend requests
     - [x] Remove Friends
 - [x] Have 1-on-1 conversations with friends(socketio)
+    - [x] Store the private messages in a Database
     - [ ] Last seen and online status
 - [ ] Frontent 
 - [ ] More image assets and ui/ux design
-- [ ] Add CORS, loggers in backend
+- [x] Add CORS
+- [x] Add environment variable for urls,jwt secrets etc
+- [ ] loggers in backend
 - [ ] Some more features
