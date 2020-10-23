@@ -1,7 +1,17 @@
 # vent-chat
 
 demo : [ventchat](http://ventchat.herokuapp.com)
+# Instructions
 
+#### 1 . Clone or download this repo
+
+#### 2 . install nodejs/npm and install dependiences using 
+>npm i 
+
+####  3. run locally using
+> node app.js
+
+#### 4 go to http://localhost:3000/ in web browser 
 
 
 ### Features
